@@ -6,3 +6,14 @@ request({ url: url,json:true},(error,response)=>{
     const current = response.body.currently;
     console.log("It is currently "+current.temperature+" degrees out. There is a "+current.precipProbability+"% chance of rain.")
 })
+
+const geoURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/bangalore.json?access_token=pk.eyJ1IjoibWFja3NoYW0iLCJhIjoiY2p5YmU4d3hxMDdnMTNicW16dm1jbzd0aCJ9.u2hSsmM8gf4HS89tPvgLrA&limit=1'
+
+request({ url: geoURL,json:true},(error,response)=>{
+    // console.log(response);
+    const latitude = response.body.features[0].center[1];
+    const longitude = response.body.features[0].center[0];
+    console.log("Latitude : "+latitude);
+    console.log("Longitute : "+longitude);
+    // console.log("It is currently "+current.temperature+" degrees out. There is a "+current.precipProbability+"% chance of rain.")
+})
