@@ -6,11 +6,11 @@ const geocode = (address,callback) => {
     request({ url: geocodeURL,json:true},(error,response)=>{
         // console.log(error);
         if(error){
-            callback("Unable to connect to netwrok",null)
+            callback("Unable to connect to netwrok",undefined)
         }else if(response.body.features.length == 0){
-            callback("Unable to find location",null)
+            callback("Unable to find location",undefined)
         }else{
-            callback(null,{
+            callback(undefined,{
                 latitude:response.body.features[0].center[1],
                 longitude : response.body.features[0].center[0],
                 location : response.body.features[0].place_name
